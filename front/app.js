@@ -30,6 +30,7 @@ var NewPostForm = React.createClass({
           onChange={this.handleChange}
           value={this.state.input}></input>
         <input type="submit"></input>
+        <p>{this.state.input}</p>
       </form>
     )
   }

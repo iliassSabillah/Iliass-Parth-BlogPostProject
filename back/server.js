@@ -5,13 +5,9 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-
-
-
 const path = require('path');
 const rootPath = path.join(__dirname, '../../');
-// var bodyParser = require('body-parser');
-
+const bodyParser = require('body-parser');
 
 //Require in models:
 //(this is a necessary step that loads our models and registers them with mongoose)
@@ -27,6 +23,7 @@ mongoose.connect('mongodb://localhost/blog-app');
 const db = mongoose.connection;
 //Start the server after successful database connection:
 db.on('open', () => {
+  app.use(bodyParser.urlencoded({ extended: false }));
   app.use(express.static('bundle'))
   app.use('/posts', routes.posts);
   app.use('*', routes.home);
