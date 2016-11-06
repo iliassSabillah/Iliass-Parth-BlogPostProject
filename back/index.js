@@ -4,17 +4,21 @@
 
 //Models
 const Posts = require('./posts/posts-model');
+const Comments = require('./comments/comments-model')
 
 //Routes
 const home = require('./home/home-router');
 const posts = require('./posts/posts-router');
+const comments = require('./comments/comments-router')
 
 module.exports = {
   models: {
-    Posts: Posts
+    Posts: Posts,
+    Comments: Comments
   },
   routes: {
     posts: posts,
-    home: home
+    home: home,
+    comments: comments
   }
 }
