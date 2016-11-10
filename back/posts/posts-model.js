@@ -11,6 +11,9 @@
 //Comments on posts
 //Author of blog posts
 //archive: Boolean
+
+
+
 const mongoose = require('mongoose');
 const PostSchema = mongoose.Schema({
   title: {type: String, required: true},

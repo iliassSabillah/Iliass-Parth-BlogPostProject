@@ -24,8 +24,8 @@ const Comments = React.createClass({
   render: function() {
     return (
       <div>
-      	<h1>Comments:</h1>
-        {this.state.comments.map((comment, indx) => <Comment key={indx} comment={comment} />).filter((id)=> id===this.props.id)}
+      	<h1>Comments List:</h1>
+        {this.state.comments.map((comment, indx) => <Comment key={indx} comment={comment} />)}
       </div>
     );
   }

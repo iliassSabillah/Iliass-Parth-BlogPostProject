@@ -1,9 +1,9 @@
 import React, {PropTypes} from 'react';
 import $ from 'jquery';
 import Post from './post';
-import {Link} from 'react-router'
-import CreateComment from './create-comment'
-import Comments from './comments'
+import {Link} from 'react-router';
+import CreateComment from './create-comment';
+import Comments from './comments';
 
 //PostPage that displays individual posts
 const PostPage = React.createClass({
@@ -12,7 +12,7 @@ const PostPage = React.createClass({
   },
   componentDidMount() {
     $.ajax({
-      url: `/posts/${this.props.params.id}`,
+      url: `/post/${this.props.params.id}`,
       type: 'GET'
     })
     .done((data) => {
@@ -38,13 +38,11 @@ const PostPage = React.createClass({
         <h1>Individual Post:</h1>
         <Post post={this.state.post} />
         <CreateComment />
-        <Comments id={this.state.post._id}/>
-
+        <Comments/>
       </div>
     ) : null;
   }
 });
-// PropTypes.oneOf([PropTypes.array, PropTypes.object])
 
 // const postsStyle = {
 //     backgroundColor: 'azure',

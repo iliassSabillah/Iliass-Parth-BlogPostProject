@@ -8,9 +8,8 @@ const CreateComment = React.createClass({
     return {
       username: '',
       text: '',
-      likeOrDislike: '',
-      date: Date.now(),
-      postId:''
+      rating: '',
+      date: Date.now()
     }
   },
   handleChange(inputField, e) {
@@ -24,9 +23,8 @@ const CreateComment = React.createClass({
       data: {
         username: this.state.username,
         text: this.state.text,
-        likeOrDislike: this.state.likeOrDislike,
-        data: this.state.date,
-        postId: this.state.postId
+        rating: this.state.rating,
+        data: this.state.date
       }
     })
   },
@@ -34,7 +32,7 @@ const CreateComment = React.createClass({
     return (
     
       <form>
-        <h1>Comments:</h1>
+        <h1>Add Comments:</h1>
         <label>Username: </label>
         <input onChange={this.handleChange.bind(this, 'username')} type="text" name="username" />
         <br/>
@@ -42,11 +40,11 @@ const CreateComment = React.createClass({
         <label>Comment: </label>
         <input onChange={this.handleChange.bind(this, 'text')} type="text" name="text" />
         <br/>
-        <label>Like Or Dislike: </label>
-        <input onChange={this.handleChange.bind(this, 'likeOrDislike')} type="text" name="likeOrDislike" />
+        <label>Rating: </label>
+        <input onChange={this.handleChange.bind(this, 'rating')} type="text" name="rating" />
         <br/>
         <br/>
-        <input onClick={this.sendCommentRequest} type="button" value="Send a comment" />
+        <Link to="/new-comments"><input onClick={this.sendCommentRequest} type="button" value="Send a comment" /></Link>
       </form>
     )
   }

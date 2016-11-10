@@ -20,10 +20,9 @@ const db = mongoose.connection;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//Serving up bundle.js file
+//Serving up bundle.js file in bundle folder
 app.use(express.static(`${rootPath}/bundle`));
 
-//API
 //Get all blog posts
 
 app.get('/posts', (req, res) => {
@@ -41,24 +40,6 @@ app.post('/new-posts', (req, res) => {
   });
 });
 
-//update a post
-
-// app.put('/posts/:id', (req, res) => {
-//     var id= req.params.id;
-//     Post.findById(id, (err, data) => {
-//         if(e) return res.send(500, e);
-//         if(!data) return res.send(404); 
-//        var update = { 
-//             title : req.body.title, 
-//             author : req.body.author,
-//             text: req.body.body
-//         }; 
-//         Post.updateById(id, update, (err)=> { // 5
-//               if(err) return res.send(500, err);
-
-//         });
-//     })
-// });
 
 //Get an individual post
 
@@ -90,20 +71,40 @@ app.post('/new-comments', (req, res) => {
   });
 });
 
-
 //Server call that serves index.html and forwards routing to React router
 app.get('/*', (req, res) => {
   res.sendFile(`${rootPath}/front/index.html`);
 });
 
-
+//server listen on port after the db connection is on
 db.on('open', () => {
   console.log('db connection opened!');
-  app.listen(3000, () => {
-    console.log('Listening on port 3000');
+  app.listen(5000, () => {
+    console.log('Listening on port 5000');
   });
 })
 
+//throw error in case db connection failed
 db.on('error', () => {
   console.log('error in db connection!');
 })
+
+
+//update a post
+
+// app.put('/posts/:id', (req, res) => {
+//     var id= req.params.id;
+//     Post.findById(id, (err, data) => {
+//         if(e) return res.send(500, e);
+//         if(!data) return res.send(404); 
+//        var update = { 
+//             title : req.body.title, 
+//             author : req.body.author,
+//             text: req.body.body
+//         }; 
+//         Post.updateById(id, update, (err)=> { // 5
+//               if(err) return res.send(500, err);
+
+//         });
+//     })
+// });
